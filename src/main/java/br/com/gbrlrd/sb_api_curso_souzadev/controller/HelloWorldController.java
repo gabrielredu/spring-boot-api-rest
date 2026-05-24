@@ -5,12 +5,17 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/v1/hello")
-@CrossOrigin("*")
 public class HelloWorldController {
+
+	@GetMapping(value = "/{id}")
+	@ResponseStatus(HttpStatus.OK)
+	public String helloWorldComId(@PathVariable("id") String id) {
+		return "Hello World with id: " + id;
+	}
 
 	@GetMapping
 	@ResponseStatus(HttpStatus.OK)
-	public String helloWorld() {
-		return "Hello World!";
+	public String helloWorldDois(){
+		return "Esse é simples";
 	}
 }
