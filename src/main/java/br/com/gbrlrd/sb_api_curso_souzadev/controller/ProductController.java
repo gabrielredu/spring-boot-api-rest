@@ -28,4 +28,10 @@ public class ProductController {
 	public ProductEntity createProduct(@RequestBody ProductDto product) {
 		return service.createProduct(product);
 	}
+
+	@PutMapping("/{id}")
+	@ResponseStatus(HttpStatus.CREATED)
+	public ProductEntity updateProduct(@RequestBody ProductDto product, @PathVariable Integer id) {
+		return service.updateProduct(product, id);
+	}
 }
