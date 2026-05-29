@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 @ToString
 @Builder
 public class ProductEntity {
-	private int id;
+	private Integer id;
 	private String name;
 	private BigDecimal price;
 	private int quantity;
