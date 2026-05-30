@@ -2,6 +2,7 @@ package br.com.gbrlrd.sb_api_curso_souzadev.controller;
 
 import br.com.gbrlrd.sb_api_curso_souzadev.database.model.ProductEntity;
 import br.com.gbrlrd.sb_api_curso_souzadev.dto.ProductDto;
+import br.com.gbrlrd.sb_api_curso_souzadev.exception.NotFoundException;
 import br.com.gbrlrd.sb_api_curso_souzadev.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -31,7 +32,7 @@ public class ProductController {
 
 	@PutMapping("/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public ProductEntity updateProduct(@RequestBody ProductDto product, @PathVariable Integer id) {
+	public ProductEntity updateProduct(@RequestBody ProductDto product, @PathVariable Integer id) throws NotFoundException {
 		return service.updateProduct(product, id);
 	}
 

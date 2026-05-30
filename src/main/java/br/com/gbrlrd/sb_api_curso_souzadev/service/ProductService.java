@@ -2,6 +2,7 @@ package br.com.gbrlrd.sb_api_curso_souzadev.service;
 
 import br.com.gbrlrd.sb_api_curso_souzadev.database.model.ProductEntity;
 import br.com.gbrlrd.sb_api_curso_souzadev.dto.ProductDto;
+import br.com.gbrlrd.sb_api_curso_souzadev.exception.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -71,11 +72,11 @@ public class ProductService {
 		return newProduct;
 	}
 
-	public ProductEntity updateProduct(ProductDto productDto, Integer id) {
+	public ProductEntity updateProduct(ProductDto productDto, Integer id) throws NotFoundException {
 		ProductEntity product = PRODUCTS.stream()
 				.filter(p -> p.getId().equals(id))
 				.findAny()
-				.orElseThrow(() -> new RuntimeException("Produto não encontrado"));
+				.orElseThrow(() -> new NotFoundException("Product not found."));
 
 		product.setName(productDto.getName());
 		product.setPrice(productDto.getPrice());
